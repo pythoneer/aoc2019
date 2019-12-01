@@ -20,7 +20,7 @@ pub fn part2(input: &[u32]) -> u64 {
     input.iter().copied().map(fuel_rec).map(u64::from).sum()
 }
 
-fn main() -> Result<(), Box<dyn Error>>{
+fn main() -> Result<(), Box<dyn Error>> {
     let input = include_str!("../../input/day1.txt");
     let input = parse_input(input)?;
 
@@ -28,4 +28,25 @@ fn main() -> Result<(), Box<dyn Error>>{
     println!("part2: {}", part2(&input));
 
     Ok(())
+}
+
+
+#[cfg(test)]
+mod tests {
+    use crate::*;
+
+    #[test]
+    fn fuel_test() {
+        assert_eq!(fuel(12), 2);
+        assert_eq!(fuel(14), 2);
+        assert_eq!(fuel(1969), 654);
+        assert_eq!(fuel(100756), 33583);
+    }
+
+    #[test]
+    fn fuel_rec_test() {
+        assert_eq!(fuel_rec(14), 2);
+        assert_eq!(fuel_rec(1969), 966);
+        assert_eq!(fuel_rec(100756), 50346);
+    }
 }
